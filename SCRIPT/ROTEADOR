@@ -1,0 +1,77 @@
+enable 
+configure terminal
+hostname RT-01
+banner motd "ACESSO PARA O T.I"
+enable secret  SenhaEnable
+ip domain-name peacheanddaisy.local
+crypto key generate rsa general-keys modulus 1024
+line vty 0 15 
+password SenhadaVTY
+transport input ssh
+exec-timeout 10
+login local 
+exit
+username MatheusL privilege 15 secret Sprint2
+username Guilherme privilege 15 secret Sprint2
+username MatheusS privilege 15 secret Sprint2
+username MatheusP privilege 15 Secret Sprint2
+line console 0
+password SenhadaConsole
+login
+exit
+service password-encryption 
+interface g0/0
+ip address 172.16.20.33 255.255.255.240
+no shutdown
+exit
+interface g0/0.100
+encapsulation dot1q 100
+ip address 172.16.20.37 255.255.255.240
+Description REDE 192.16.20.32/28
+exit
+interface g0/0.10 
+encapsulation dot1q 10
+ip address 172.16.0.0 255.255.248.0
+no shutdown 
+exit
+interface g0/0.20
+encapsulation dot1q 20
+ip address 172.16.8.16.0 255.255.248.0
+no shutdown
+exit
+interface g0/0.30 
+encapsulation dot1q 30
+ip address 172.16.16.0 255.255.254.0
+no shutdown
+exit
+interface g0/0.40
+encapsulation dot1q 40
+ip address 172.16.18.0 255.255.255.128
+no shutdown
+exit
+interface g0/0.50
+encapsulation dot1q 500
+ip address 172.16.18.128 255.255.255.128
+no shutdown
+exit
+interface g0/0.60 
+encapsulation dot1q 60
+ip address 172.16.19.0 255.255.255.128
+no shutdown
+exi
+interface g0/0.70 
+encapsulation dot1q 70
+ip address 172.16.19.128 255.255.255.192
+no shutdown
+exit
+interface g0/0.80
+encapsulation dot1q 80
+ip address 172.16.19.192 255.255.255.192
+no shutdown
+exit
+interface g0/0.90 
+encapsulation dot1q 90
+ip address 172.16.20.0 255.255.255.224
+no shutdown
+do wr
+ 
